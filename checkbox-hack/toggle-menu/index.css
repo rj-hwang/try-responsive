@@ -1,0 +1,126 @@
+/* 菜单按钮 */
+
+.btn {
+	position: absolute;
+	top: .5em;
+	right: .5em;
+	z-index: 100;
+	padding: 0.25em 2%;
+	background-color: #5b5756;
+	z-index: 1;
+}
+
+.btn:hover {
+	background-color: #7b7776;
+}
+
+
+/* 将checkbox控件远离可视空间 */
+
+#toggle {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	z-index: 1;
+}
+
+#close {
+	display: none;
+}
+
+ul {
+	display: none;
+	position: absolute;
+	top: 2.5em;
+	left: 0;
+	width: 100%;
+	transition: 0.5s;
+	z-index: 3;
+	
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul > li.current > a {
+	color: #666;
+}
+
+ul > li > a {
+	display: block;
+	line-height: 2em;
+	height: 2em;
+	border-bottom: 1px solid #999;
+	background: #333;
+	padding: 0 .5em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #fff;
+	text-decoration: none;
+	transition: 0.5s;
+	position: relative;
+	z-index: 1;
+}
+
+ul > li > a:hover {
+	background: #444;
+}
+
+#toggle:checked ~ ul {
+	display: block;
+	/*设置在所有其它元素之上*/
+	z-index: 101;
+}
+
+#toggle:checked ~ #close {
+	display: block;
+	/*保证在其它菜单项的底部*/
+	z-index: 2;
+	/*使占满整个可视空间，实现点击非菜单项位置就关闭菜单*/
+	background: transparent;
+	position: absolute;
+	border-bottom: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+/*
+@media screen and (min-width: 48em) {
+	.btn {
+		display: none;
+	}
+	#toggle:checked ~ nav #nav, #nav {
+		top: 2em;
+		right: 2%;
+		left: 35%;
+		-webkit-box-shadow: 0;
+		-moz-box-shadow: 0;
+		-ms-box-shadow: 0;
+		-o-box-shadow: 0;
+		box-shadow: 0;
+	}
+	#nav li {
+		display: inline;
+		float: left;
+	}
+	#nav li.current a {
+		color: #7b7776;
+	}
+	#nav a {
+		line-height: 1em;
+		height: 1em;
+		display: inline;
+		float: right;
+		background: transparent;
+		padding: 0 1.15em;
+		border-bottom: 0
+	}
+	#nav #close {
+		display: none;
+	}
+}
+*/
